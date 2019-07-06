@@ -11,19 +11,23 @@ import Firebase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var ref: DatabaseReference!
-    var schedules: [String: String] = [String: String]()
-
+    
+    var snapshots: [DataSnapshot] = [DataSnapshot]()
+    var schedules: [Schedule] = [Schedule]()
+    @IBOutlet weak var scheduleTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // User is signed in
+        scheduleTableView.delegate = self
+        scheduleTableView.dataSource = self
         if Auth.auth().currentUser != nil {
-            ref = Database.database().reference().child("Schedule")
             loadData()
         }
+        configureTableView()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         print("Coming back to main view controller")
         if Auth.auth().currentUser == nil {
@@ -46,15 +50,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customScheduleCell", for: indexPath) as! SchdeduleTableViewCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "Cell",
+            for: indexPath) as! SchdeduleTableViewCell
+        cell.eventLabel.text = schedules[indexPath.row].events?[0]
         return cell
     }
     
     // Mark: - Firebase DB
     func loadData() {
-        ref.observe(.childAdded) { (DataSnapshot) in
-            print(DataSnapshot.value as! String)
-        }
+        print("Inside load data")
+        let ref: DatabaseReference = Database.database().reference().child("schedule")
+        ref.observeSingleEvent(of: DataEventType.value, with: { (DataSnapshot) in
+            for item in DataSnapshot.children {
+                let child = item as! DataSnapshot
+                let snapshot = child.value as! [String:AnyObject]
+                var schedule: Schedule = Schedule()
+                if let events = snapshot["events"] as! Array<String>? {
+                    print(events)
+                    schedule.events = events
+                }
+                if let times = snapshot["times"] as! Array<String>? {
+                    print(times)
+                    schedule.times = times
+                }
+                if let title = snapshot["title"] as! String? {
+                    print(title)
+                    schedule.title = title
+                }
+                if let expiryDate = snapshot["expiryDate"] as! TimeInterval? {
+                    print(expiryDate)
+                    schedule.expiryDate = expiryDate
+                }
+                self.schedules.append(schedule)
+            }
+            self.configureTableView()
+            self.scheduleTableView.reloadData()
+        })
+    }
+    
+    func configureTableView() {
+        scheduleTableView.rowHeight = UITableView.automaticDimension
+        scheduleTableView.estimatedRowHeight = 400
     }
 }
-

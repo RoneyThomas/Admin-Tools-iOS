@@ -21,6 +21,33 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="znZ-7A-3rk">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="yfB-3U-m15" customClass="SchdeduleTableViewCell" customModule="Church_Admin" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yfB-3U-m15" id="RMh-jf-9Se">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlB-oo-5zo">
+                                                    <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VlB-oo-5zo" secondAttribute="trailing" id="CZv-Ak-qfE"/>
+                                                <constraint firstItem="VlB-oo-5zo" firstAttribute="top" secondItem="RMh-jf-9Se" secondAttribute="topMargin" id="FOc-a5-Kgn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="VlB-oo-5zo" secondAttribute="bottom" id="FsV-r8-XXE"/>
+                                                <constraint firstItem="VlB-oo-5zo" firstAttribute="leading" secondItem="RMh-jf-9Se" secondAttribute="leadingMargin" id="YlF-Pg-3fI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="eventLabel" destination="VlB-oo-5zo" id="Rof-7X-mkU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,12 +67,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="scheduleTableView" destination="znZ-7A-3rk" id="6RT-kE-6OL"/>
                         <segue destination="CaH-WN-fHI" kind="show" identifier="goToSignIn" id="s5f-FW-kVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731.8840579710145" y="114.50892857142857"/>
+            <point key="canvasLocation" x="730.43478260869574" y="114.50892857142857"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="djj-Zn-k4n">

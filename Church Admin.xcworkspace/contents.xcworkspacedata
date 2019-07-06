@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SchdeduleTableViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:Church Admin.xcodeproj">
    </FileRef>
    <FileRef
