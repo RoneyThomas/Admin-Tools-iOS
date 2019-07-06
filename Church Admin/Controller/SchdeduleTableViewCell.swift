@@ -11,7 +11,6 @@ import UIKit
 class SchdeduleTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var eventLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

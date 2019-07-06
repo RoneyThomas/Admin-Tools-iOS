@@ -35,14 +35,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    @IBAction func addTouchButton(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-            self.performSegue(withIdentifier: "goToSignIn", sender: self)
-        } catch let error {
-            print(error)
-        }
-    }
     // MARK: - TableView Delegates
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell",
             for: indexPath) as! SchdeduleTableViewCell
-        cell.eventLabel.text = schedules[indexPath.row].events?[0]
+        cell.eventLabel.attributedText = makeAttributedString(title: schedules[indexPath.row].title ?? "", events: schedules[indexPath.row].events!)
         return cell
     }
     
@@ -92,5 +84,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func configureTableView() {
         scheduleTableView.rowHeight = UITableView.automaticDimension
         scheduleTableView.estimatedRowHeight = 400
+    }
+    
+    func makeAttributedString(title: String, events: Array<String>) -> NSAttributedString {
+        let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
+        let subtitleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)]
+        
+        let attributedString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
+        for event in events.dropLast() {
+            attributedString.append(NSAttributedString(string: "\(event)\n", attributes: subtitleAttributes))
+        }
+        if events.count >= 1 {
+            attributedString.append(NSAttributedString(string: events.last!, attributes: subtitleAttributes))
+        }
+        print(attributedString)
+        return attributedString
     }
 }

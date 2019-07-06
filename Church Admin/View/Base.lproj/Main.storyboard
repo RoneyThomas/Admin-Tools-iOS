@@ -10,6 +10,32 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add Schedule View Controller-->
+        <scene sceneID="LMo-OT-583">
+            <objects>
+                <viewController id="zq0-oI-tHg" customClass="AddScheduleViewController" customModule="Church_Admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Srl-QI-4hq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gfU-4k-OCf">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="n5s-yG-aL1" firstAttribute="trailing" secondItem="gfU-4k-OCf" secondAttribute="trailing" id="9Dr-ft-jth"/>
+                            <constraint firstItem="gfU-4k-OCf" firstAttribute="leading" secondItem="n5s-yG-aL1" secondAttribute="leading" id="MRc-GT-GNy"/>
+                            <constraint firstItem="gfU-4k-OCf" firstAttribute="top" secondItem="n5s-yG-aL1" secondAttribute="top" id="UmJ-A0-GZ9"/>
+                            <constraint firstItem="n5s-yG-aL1" firstAttribute="bottom" secondItem="gfU-4k-OCf" secondAttribute="bottom" id="jHj-Dv-7YJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="n5s-yG-aL1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3jT-5J-VE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1657" y="115"/>
+        </scene>
         <!--Schedule-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -18,12 +44,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="znZ-7A-3rk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="znZ-7A-3rk">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="yfB-3U-m15" customClass="SchdeduleTableViewCell" customModule="Church_Admin" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yfB-3U-m15" id="RMh-jf-9Se">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -63,6 +89,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="z9W-uF-NPa">
                             <connections>
                                 <action selector="addTouchButton:" destination="BYZ-38-t0r" id="y7l-As-HFg"/>
+                                <segue destination="zq0-oI-tHg" kind="show" id="6vx-Vl-8Eb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -106,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9w-RR-55O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655.072463768116" y="114.50892857142857"/>
+            <point key="canvasLocation" x="725" y="852"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gvY-Ix-QOe">

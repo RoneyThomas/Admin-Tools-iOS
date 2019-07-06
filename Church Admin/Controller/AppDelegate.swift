@@ -53,5 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                                                      annotation: [:])
     }
+    
+//    func signOut() {
+//        do {
+//            try Auth.auth().signOut()
+//            performSegue(withIdentifier: "goToSignIn", sender: self)
+//        } catch let error {
+//            print(error)
+//        }
+//    }
 }
 
