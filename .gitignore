@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/xcode,swift
 # Edit at https://www.gitignore.io/?templates=xcode,swift
 
@@ -106,3 +105,6 @@ GoogleService-Info.plist
 
 ### Firebase ###
 **/*firebase-crashreporting.json
+
+## Mac 
+.DS_Store
