@@ -22,6 +22,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // User is signed in
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
+        // Used to set UITableView height to height of the cells
+        scheduleTableView.tableFooterView = UIView()
         if Auth.auth().currentUser != nil {
             loadData()
         }
@@ -45,7 +47,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell",
             for: indexPath) as! SchdeduleTableViewCell
-        cell.eventLabel.attributedText = makeAttributedString(title: schedules[indexPath.row].title ?? "", events: schedules[indexPath.row].events!)
+        cell.eventLabel.attributedText = makeAttributedString(title: schedules[indexPath.row].title ?? "", times: schedules[indexPath.row].times!,
+                                                              events: schedules[indexPath.row].events!)
         return cell
     }
     
@@ -86,15 +89,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         scheduleTableView.estimatedRowHeight = 400
     }
     
-    func makeAttributedString(title: String, events: Array<String>) -> NSAttributedString {
+    func makeAttributedString(title: String, times: Array<String>, events: Array<String>) -> NSAttributedString {
         let titleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
         let subtitleAttributes = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)]
+        let timeAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)]
         
         let attributedString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
-        for event in events.dropLast() {
+        for (event, time) in zip(events.dropLast(), times.dropLast()) {
+            attributedString.append(NSAttributedString(string: "\(time) ", attributes: timeAttributes))
             attributedString.append(NSAttributedString(string: "\(event)\n", attributes: subtitleAttributes))
         }
-        if events.count >= 1 {
+        if events.count >= 1 || times.count >= 1 {
+            attributedString.append(NSAttributedString(string: "\(times.last!) ", attributes: timeAttributes))
             attributedString.append(NSAttributedString(string: events.last!, attributes: subtitleAttributes))
         }
         print(attributedString)
