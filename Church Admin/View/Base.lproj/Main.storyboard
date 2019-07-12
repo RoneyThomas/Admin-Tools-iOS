@@ -27,13 +27,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2FF-sa-gB2">
                                 <rect key="frame" x="20" y="147.5" width="374" height="30"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRD-Kl-XGr">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRD-Kl-XGr">
                                         <rect key="frame" x="0.0" y="0.0" width="338" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPd-Js-PRo">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPd-Js-PRo">
                                         <rect key="frame" x="350" y="0.0" width="24" height="30"/>
                                         <state key="normal" image="baseline_date_range_black_24pt_1x"/>
                                         <connections>
@@ -48,17 +48,57 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wta-H6-imG">
-                                <rect key="frame" x="20" y="214" width="374" height="128"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wta-H6-imG">
+                                <rect key="frame" x="20" y="214" width="374" height="648"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m46-FK-IcQ">
+                                    <rect key="frame" x="0.0" y="72" width="374" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Add"/>
+                                    <connections>
+                                        <action selector="addEventRow:" destination="zq0-oI-tHg" eventType="touchUpInside" id="ZxG-c0-KIR"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1yt-bT-RCa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="bh6-kL-N5R" customClass="EventTableViewCell" customModule="Church_Admin" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1yt-bT-RCa" id="C4R-mB-beQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bh6-kL-N5R" id="Siw-Ir-25E">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XZF-Wf-GoI">
+                                                    <rect key="frame" x="0.0" y="7" width="374" height="30"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="08:00 AM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mf1-7c-N1A">
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="timeFieldEditing:" destination="bh6-kL-N5R" eventType="editingDidBegin" id="axT-r5-q64"/>
+                                                            </connections>
+                                                        </textField>
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Holy Qurbana" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2O3-aP-j78">
+                                                            <rect key="frame" x="97" y="0.0" width="277" height="30"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XZF-Wf-GoI" firstAttribute="leading" secondItem="Siw-Ir-25E" secondAttribute="leading" id="A4Y-HC-8qA"/>
+                                                <constraint firstAttribute="bottom" secondItem="XZF-Wf-GoI" secondAttribute="bottom" constant="6.75" id="Dfl-Z8-ayn"/>
+                                                <constraint firstAttribute="trailing" secondItem="XZF-Wf-GoI" secondAttribute="trailing" id="Kud-AN-T35"/>
+                                                <constraint firstItem="XZF-Wf-GoI" firstAttribute="top" secondItem="Siw-Ir-25E" secondAttribute="top" constant="6.75" id="btc-TE-BJe"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="eventTextField" destination="2O3-aP-j78" id="Hd4-dy-Kh3"/>
+                                            <outlet property="timeTextField" destination="Mf1-7c-N1A" id="5TN-Nc-RUO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -72,6 +112,7 @@
                             <constraint firstItem="n5s-yG-aL1" firstAttribute="trailing" secondItem="wta-H6-imG" secondAttribute="trailing" constant="20" id="P6g-dq-yQD"/>
                             <constraint firstItem="Z0d-It-sbn" firstAttribute="leading" secondItem="n5s-yG-aL1" secondAttribute="leading" constant="20" id="Tc5-om-h8N"/>
                             <constraint firstItem="2FF-sa-gB2" firstAttribute="top" secondItem="Z0d-It-sbn" secondAttribute="bottom" constant="8" id="hIW-ji-Pwc"/>
+                            <constraint firstItem="n5s-yG-aL1" firstAttribute="bottom" secondItem="wta-H6-imG" secondAttribute="bottom" id="kR5-9O-Gs0"/>
                             <constraint firstItem="n5s-yG-aL1" firstAttribute="trailing" secondItem="2FF-sa-gB2" secondAttribute="trailing" constant="20" id="qjh-mQ-tLo"/>
                             <constraint firstItem="TLD-Gs-Ukn" firstAttribute="top" secondItem="2FF-sa-gB2" secondAttribute="bottom" constant="8" id="uD9-XN-jkN"/>
                             <constraint firstItem="2FF-sa-gB2" firstAttribute="leading" secondItem="n5s-yG-aL1" secondAttribute="leading" constant="20" id="wsB-44-Jva"/>
@@ -82,12 +123,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="jkD-X2-ECZ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventTableView" destination="wta-H6-imG" id="0T4-ao-h5y"/>
                         <outlet property="titleTextField" destination="jRD-Kl-XGr" id="zJp-ZD-p2X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3jT-5J-VE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656.521739130435" y="114.50892857142857"/>
+            <point key="canvasLocation" x="1656.0267857142856" y="114.49275362318842"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="tne-QT-ifu">
@@ -109,7 +151,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlB-oo-5zo">
-                                                    <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                                    <rect key="frame" x="20" y="11" width="768" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

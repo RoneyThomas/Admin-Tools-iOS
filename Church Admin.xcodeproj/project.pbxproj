@@ -17,6 +17,7 @@
 		B453EE4C22CFEC7A0052C93D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453EE4B22CFEC7A0052C93D /* SignInViewController.swift */; };
 		B453EE5422D02D610052C93D /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453EE5322D02D610052C93D /* Schedule.swift */; };
 		B453EE5622D0837A0052C93D /* SchdeduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453EE5522D0837A0052C93D /* SchdeduleTableViewCell.swift */; };
+		B4B1BC9D22D802970079C5D2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B1BC9C22D802970079C5D2 /* EventTableViewCell.swift */; };
 		B4E99E0E22D1441600D90D32 /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E99E0D22D1441600D90D32 /* AddScheduleViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		B453EE4B22CFEC7A0052C93D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B453EE5322D02D610052C93D /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		B453EE5522D0837A0052C93D /* SchdeduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchdeduleTableViewCell.swift; sourceTree = "<group>"; };
+		B4B1BC9C22D802970079C5D2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		B4E99E0D22D1441600D90D32 /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 				B453EE4B22CFEC7A0052C93D /* SignInViewController.swift */,
 				B453EE5522D0837A0052C93D /* SchdeduleTableViewCell.swift */,
 				B4E99E0D22D1441600D90D32 /* AddScheduleViewController.swift */,
+				B4B1BC9C22D802970079C5D2 /* EventTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				B4E99E0E22D1441600D90D32 /* AddScheduleViewController.swift in Sources */,
 				B453EE3222CFDBDD0052C93D /* AppDelegate.swift in Sources */,
 				B453EE4C22CFEC7A0052C93D /* SignInViewController.swift in Sources */,
+				B4B1BC9D22D802970079C5D2 /* EventTableViewCell.swift in Sources */,
 				B453EE5422D02D610052C93D /* Schedule.swift in Sources */,
 				B453EE5622D0837A0052C93D /* SchdeduleTableViewCell.swift in Sources */,
 			);
