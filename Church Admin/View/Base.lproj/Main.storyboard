@@ -68,10 +68,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XZF-Wf-GoI">
-                                                    <rect key="frame" x="0.0" y="7" width="374" height="30"/>
+                                                    <rect key="frame" x="0.0" y="7" width="374" height="30.5"/>
                                                     <subviews>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="08:00 AM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mf1-7c-N1A">
-                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="30.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -80,7 +80,7 @@
                                                             </connections>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Holy Qurbana" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2O3-aP-j78">
-                                                            <rect key="frame" x="97" y="0.0" width="277" height="30"/>
+                                                            <rect key="frame" x="97" y="0.0" width="277" height="30.5"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -120,7 +120,11 @@
                         <viewLayoutGuide key="safeArea" id="n5s-yG-aL1"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Schedule" id="6gh-BM-aSb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="jkD-X2-ECZ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="jkD-X2-ECZ">
+                            <connections>
+                                <action selector="saveSchedule:" destination="zq0-oI-tHg" id="I2k-Vy-NPU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="eventTableView" destination="wta-H6-imG" id="0T4-ao-h5y"/>
@@ -151,7 +155,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlB-oo-5zo">
-                                                    <rect key="frame" x="20" y="11" width="768" height="22"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

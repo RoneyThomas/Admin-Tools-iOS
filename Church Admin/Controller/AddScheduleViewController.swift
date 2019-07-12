@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
     var events: Array<String> = Array()
+    var cells: Array<UITableViewCell> = Array()
     
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -85,6 +87,7 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell",
             for: indexPath) as! EventTableViewCell
+        cells.append(cell)
         return cell
     }
     
@@ -99,5 +102,26 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func addEventRow(_ sender: Any) {
         events.append("")
         eventTableView.reloadData()
+    }
+    
+    @IBAction func saveSchedule(_ sender: Any) {
+        print(titleTextField.text ?? "")
+        var events: Array<String> = [], times: Array<String> = []
+        for row in 0..<eventTableView.numberOfRows(inSection: 0) {
+            let indexpath: IndexPath = IndexPath(row: row, section: 0)
+            let cell = eventTableView.cellForRow(at: indexpath) as! EventTableViewCell
+            times.append(cell.timeTextField.text ?? "")
+            events.append(cell.eventTextField.text ?? "")
+        }
+        let schedule: [String: Any] = ["title": titleTextField.text!, "events": events , "times": times]
+        let ref: DatabaseReference = Database.database().reference().child("schedule")
+        ref.childByAutoId().setValue(schedule) { (error, databaseReference) in
+            if let error = error {
+                print(error)
+                return
+            }
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
