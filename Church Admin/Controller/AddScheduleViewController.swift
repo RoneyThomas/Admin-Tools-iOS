@@ -14,7 +14,6 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
     var events: Array<String> = Array()
-    var cells: Array<UITableViewCell> = Array()
     
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -87,7 +86,6 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell",
             for: indexPath) as! EventTableViewCell
-        cells.append(cell)
         return cell
     }
     

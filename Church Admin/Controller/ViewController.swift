@@ -12,14 +12,17 @@ import Firebase
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    var keys: Array<String> = []
     var snapshots: [DataSnapshot] = [DataSnapshot]()
     var schedules: [Schedule] = [Schedule]()
+    var ref: DatabaseReference = DatabaseReference()
     @IBOutlet weak var scheduleTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // User is signed in
+        ref = Database.database().reference().child("schedule")
         scheduleTableView.delegate = self
         scheduleTableView.dataSource = self
         // Used to set UITableView height to height of the cells
@@ -52,13 +55,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            schedules.remove(at: indexPath.row)
+            scheduleTableView.deleteRows(at: [indexPath], with: .fade)
+            ref.child(keys[indexPath.row]).removeValue()
+            keys.remove(at: indexPath.row)
+        }
+    }
+    
     // Mark: - Firebase DB
     func loadData() {
         print("Inside load data")
-        let ref: DatabaseReference = Database.database().reference().child("schedule")
         ref.observeSingleEvent(of: DataEventType.value, with: { (DataSnapshot) in
             for item in DataSnapshot.children {
                 let child = item as! DataSnapshot
+                self.keys.append(child.key)
                 let snapshot = child.value as! [String:AnyObject]
                 var schedule: Schedule = Schedule()
                 if let events = snapshot["events"] as! Array<String>? {
