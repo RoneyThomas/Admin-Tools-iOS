@@ -11,7 +11,7 @@ import GoogleSignIn
 import FirebaseAuth
 
 class SignInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,16 +20,16 @@ class SignInViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDele
         GIDSignIn.sharedInstance().uiDelegate = self
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     // Called when the user signed in successfuly
     // Triggered when the user signs in
     // Triggered when the user signs in

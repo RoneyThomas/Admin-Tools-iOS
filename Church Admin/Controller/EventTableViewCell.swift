@@ -56,7 +56,7 @@ class EventTableViewCell: UITableViewCell, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return !autoCompleteText(in: textField, using: string, suggestions: eventSuggestions)
     }
-
+    
     func autoCompleteText(in textField: UITextField, using string: String, suggestions: [String]) -> Bool {
         if !string.isEmpty,
             let selectedTextRange = textField.selectedTextRange, selectedTextRange.end == textField.endOfDocument,
@@ -64,13 +64,13 @@ class EventTableViewCell: UITableViewCell, UITextFieldDelegate {
             let text = textField.text(in: prefixRange) {
             let prefix = text + string
             let matches = suggestions.filter { $0.lowercased().hasPrefix(prefix.lowercased()) }
-
+            
             if (matches.count > 0) {
                 textField.text = matches[0]
-
+                
                 if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
                     textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
-
+                    
                     return true
                 }
             }

@@ -11,7 +11,6 @@ import Firebase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     var keys: Array<String> = []
     var snapshots: [DataSnapshot] = [DataSnapshot]()
     var schedules: [Schedule] = [Schedule]()
@@ -32,6 +31,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         configureTableView()
         editingExistingSchedule = false
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         print("Coming back to main view controller")
