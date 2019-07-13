@@ -1,8 +1,10 @@
 # Admin-Tools-iOS
 
+![App Screenshot](https://github.com/RoneyThomas/Admin-Tools-iOS/blob/master/Church%20Admin/Assets.xcassets/AppIcon.appiconset/icon_60pt@3x.png?raw=true)
+
 iOS app to manage church schedule
 
-![App Screenshot]()
+![App Screenshot](https://raw.githubusercontent.com/RoneyThomas/Admin-Tools-iOS/master/Docs/Simulator%20Screen%20Shot%20-%20iPhone%20X%CA%80%20-%202019-07-13%20at%2016.57.22.png?token=AAQV4PCNUPTNIPWA72RZWQK5GOB6G)
 
 ## Setup
 
