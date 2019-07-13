@@ -188,7 +188,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="z9W-uF-NPa">
                             <connections>
                                 <action selector="addTouchButton:" destination="BYZ-38-t0r" id="y7l-As-HFg"/>
-                                <segue destination="zq0-oI-tHg" kind="show" id="6vx-Vl-8Eb"/>
+                                <segue destination="zq0-oI-tHg" kind="show" identifier="addSchedule" id="6vx-Vl-8Eb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

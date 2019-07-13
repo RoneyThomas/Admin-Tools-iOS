@@ -16,6 +16,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var snapshots: [DataSnapshot] = [DataSnapshot]()
     var schedules: [Schedule] = [Schedule]()
     var ref: DatabaseReference = DatabaseReference()
+    var selected: Int = 0
+    var editingExistingSchedule: Bool = false
     @IBOutlet weak var scheduleTableView: UITableView!
     
     override func viewDidLoad() {
@@ -27,16 +29,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         scheduleTableView.dataSource = self
         // Used to set UITableView height to height of the cells
         scheduleTableView.tableFooterView = UIView()
-        if Auth.auth().currentUser != nil {
-            loadData()
-        }
         configureTableView()
+        editingExistingSchedule = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("Coming back to main view controller")
         if Auth.auth().currentUser == nil {
             self.performSegue(withIdentifier: "goToSignIn", sender: self)
+        } else {
+            loadData()
         }
     }
     
@@ -50,8 +52,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell",
             for: indexPath) as! SchdeduleTableViewCell
-        cell.eventLabel.attributedText = makeAttributedString(title: schedules[indexPath.row].title ?? "", times: schedules[indexPath.row].times!,
-                                                              events: schedules[indexPath.row].events!)
+        cell.eventLabel.attributedText = makeAttributedString(title: schedules[indexPath.row].title ?? "", times: schedules[indexPath.row].times ?? [""],
+                                                              events: schedules[indexPath.row].events ?? [""])
         return cell
     }
     
@@ -64,9 +66,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selected = indexPath.row
+        editingExistingSchedule = true
+        performSegue(withIdentifier: "addSchedule", sender: nil)
+        scheduleTableView.deselectRow(at: indexPath, animated: true)
+        editingExistingSchedule = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addSchedule" && editingExistingSchedule {
+            if let destinationViewController = segue.destination as? AddScheduleViewController {
+                destinationViewController.schedule = schedules[selected]
+                destinationViewController.id = keys[selected]
+            }
+        }
+    }
+    
     // Mark: - Firebase DB
     func loadData() {
         print("Inside load data")
+        schedules = [Schedule]()
+        keys = []
         ref.observeSingleEvent(of: DataEventType.value, with: { (DataSnapshot) in
             for item in DataSnapshot.children {
                 let child = item as! DataSnapshot

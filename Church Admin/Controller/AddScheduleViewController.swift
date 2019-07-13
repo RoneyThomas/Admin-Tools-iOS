@@ -13,7 +13,9 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
     
     var datePicker = UIDatePicker()
     var toolBar = UIToolbar()
-    var events: Array<String> = Array()
+    var schedule: Schedule = Schedule()
+    var id: String = ""
+    var deleted: Bool = false
     
     @IBOutlet weak var eventTableView: UITableView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -23,10 +25,11 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         eventTableView.delegate = self
         eventTableView.dataSource = self
-        events.append("")
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        titleTextField.text = schedule.title
+        configureTableView()
     }
     
     
@@ -75,30 +78,45 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
     
     func configureTableView() {
         eventTableView.rowHeight = UITableView.automaticDimension
-        eventTableView.estimatedRowHeight = 43.5
+        eventTableView.estimatedRowHeight = 30.5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        if deleted {
+            return schedule.events?.count ?? 0
+        } else {
+            return schedule.events?.count ?? 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: "Cell",
             for: indexPath) as! EventTableViewCell
+        print("inside the cellForRowAt")
+        if schedule.events?.count ?? 0 > 0 {
+            cell.timeTextField.text = schedule.times![indexPath.row]
+            cell.eventTextField.text = schedule.events![indexPath.row]
+        }
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            events.remove(at: indexPath.row)
+            guard let _ = schedule.events, let _ = schedule.times else {
+                return
+            }
+            deleted = true
+            schedule.events!.remove(at: indexPath.row)
+            schedule.times!.remove(at: indexPath.row)
             eventTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
     @IBAction func addEventRow(_ sender: Any) {
-        events.append("")
+        schedule.events?.append("")
+        schedule.times?.append("")
         eventTableView.reloadData()
     }
     
@@ -112,14 +130,26 @@ class AddScheduleViewController: UIViewController, UITableViewDelegate, UITableV
             events.append(cell.eventTextField.text ?? "")
         }
         let schedule: [String: Any] = ["title": titleTextField.text!, "events": events , "times": times]
-        let ref: DatabaseReference = Database.database().reference().child("schedule")
-        ref.childByAutoId().setValue(schedule) { (error, databaseReference) in
-            if let error = error {
-                print(error)
-                return
+        if id.isEmpty {
+            let ref: DatabaseReference = Database.database().reference().child("schedule")
+            ref.childByAutoId().setValue(schedule) { (error, databaseReference) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }
-            self.navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
+        } else {
+            let ref: DatabaseReference = Database.database().reference().child("schedule").child(id)
+            ref.updateChildValues(schedule) { (error, databaseReference) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

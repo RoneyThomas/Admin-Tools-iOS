@@ -9,8 +9,8 @@
 import Foundation
 
 struct Schedule {
-    var title: String?
+    var title: String? = ""
     var expiryDate: TimeInterval?
-    var events: Array<String>?
-    var times: Array<String>?
+    var events: Array<String>? = []
+    var times: Array<String>? = []
 }
