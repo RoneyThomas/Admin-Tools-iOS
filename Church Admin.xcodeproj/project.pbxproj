@@ -13,10 +13,10 @@
 		B453EE3722CFDBDD0052C93D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B453EE3522CFDBDD0052C93D /* Main.storyboard */; };
 		B453EE3922CFDBDF0052C93D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B453EE3822CFDBDF0052C93D /* Assets.xcassets */; };
 		B453EE3C22CFDBDF0052C93D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B453EE3A22CFDBDF0052C93D /* LaunchScreen.storyboard */; };
-		B453EE4A22CFE28A0052C93D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B453EE4922CFE28A0052C93D /* GoogleService-Info.plist */; };
 		B453EE4C22CFEC7A0052C93D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453EE4B22CFEC7A0052C93D /* SignInViewController.swift */; };
 		B453EE5422D02D610052C93D /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453EE5322D02D610052C93D /* Schedule.swift */; };
 		B453EE5622D0837A0052C93D /* SchdeduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453EE5522D0837A0052C93D /* SchdeduleTableViewCell.swift */; };
+		B4634F7D231F2D4000937CC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B4634F7C231F2D4000937CC5 /* GoogleService-Info.plist */; };
 		B4B1BC9D22D802970079C5D2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B1BC9C22D802970079C5D2 /* EventTableViewCell.swift */; };
 		B4E99E0E22D1441600D90D32 /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E99E0D22D1441600D90D32 /* AddScheduleViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,10 +32,10 @@
 		B453EE3822CFDBDF0052C93D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B453EE3B22CFDBDF0052C93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B453EE3D22CFDBDF0052C93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B453EE4922CFE28A0052C93D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B453EE4B22CFEC7A0052C93D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B453EE5322D02D610052C93D /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		B453EE5522D0837A0052C93D /* SchdeduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchdeduleTableViewCell.swift; sourceTree = "<group>"; };
+		B4634F7C231F2D4000937CC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B4B1BC9C22D802970079C5D2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		B4E99E0D22D1441600D90D32 /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +103,7 @@
 		B453EE4322CFDD800052C93D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B453EE4922CFE28A0052C93D /* GoogleService-Info.plist */,
+				B4634F7C231F2D4000937CC5 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 			files = (
 				B453EE3C22CFDBDF0052C93D /* LaunchScreen.storyboard in Resources */,
 				B453EE3922CFDBDF0052C93D /* Assets.xcassets in Resources */,
-				B453EE4A22CFE28A0052C93D /* GoogleService-Info.plist in Resources */,
+				B4634F7D231F2D4000937CC5 /* GoogleService-Info.plist in Resources */,
 				B453EE3722CFDBDD0052C93D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -410,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
