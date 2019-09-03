@@ -10,5 +10,5 @@ target 'Church Admin' do
   pod 'Firebase/Auth'
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
-  pod 'GoogleSignIn', '< 5.0.0'
+  pod 'GoogleSignIn'
 end
