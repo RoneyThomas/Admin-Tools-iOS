@@ -22,15 +22,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2FF-sa-gB2">
-                                <rect key="frame" x="20" y="147.5" width="374" height="34"/>
+                                <rect key="frame" x="20" y="147.5" width="374" height="48"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRD-Kl-XGr">
-                                        <rect key="frame" x="0.0" y="0.0" width="338" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPd-Js-PRo">
-                                        <rect key="frame" x="350" y="0.0" width="24" height="34"/>
+                                        <rect key="frame" x="326" y="0.0" width="48" height="48"/>
                                         <state key="normal" image="baseline_date_range_black_24pt_1x"/>
                                         <connections>
                                             <action selector="pressedDatePicker:" destination="zq0-oI-tHg" eventType="touchUpInside" id="vuM-u6-Orl"/>
@@ -39,13 +39,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLD-Gs-Ukn">
-                                <rect key="frame" x="20" y="189.5" width="51.5" height="20.5"/>
+                                <rect key="frame" x="20" y="203.5" width="51.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wta-H6-imG">
-                                <rect key="frame" x="20" y="218" width="374" height="644"/>
+                                <rect key="frame" x="20" y="232" width="374" height="630"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m46-FK-IcQ">
                                     <rect key="frame" x="0.0" y="103.5" width="374" height="44"/>
